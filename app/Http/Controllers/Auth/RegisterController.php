@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Spatie\Permission\Models\Role;
 
 class RegisterController extends Controller
 {
@@ -27,13 +28,17 @@ class RegisterController extends Controller
         ]);
 
         // Grabo
-        User::create([
+        $usuario = User::create([
             'name' => $request->name,
             'username' => $request->username,
             'email' => $request->email,
             'password' => Hash::make($request->password)
         ]);
 
+
+        // Asigno rol por defecto "ALUMNO"
+        $rolAlumno = Role::findByName('Alumno');
+        $usuario->assignRole($rolAlumno);
 
         // Redirecciono
         return redirect()->route('login');
