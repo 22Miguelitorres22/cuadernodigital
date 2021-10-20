@@ -4,6 +4,7 @@ use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\LogoutController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -30,6 +31,10 @@ Route::post('/logout', [LogoutController::class, 'logout'])->name('logout');
 
 
 Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+
+Route::get('/users', [UserController::class, 'index'])->name('users');
+Route::get('/users/admin-register', [UserController::class, 'adminRegister'])->name('admin-register');
+Route::post('/users/admin-register', [UserController::class, 'register']);
 
 Route::get('/', function () {
     return redirect()->route('login');
