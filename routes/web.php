@@ -33,6 +33,7 @@ Route::post('/logout', [LogoutController::class, 'logout'])->name('logout');
 Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
 Route::get('/users', [UserController::class, 'index'])->name('users');
+Route::get('/users/table', [UserController::class, 'tableUsers'])->name('table');
 Route::get('/users/admin-register', [UserController::class, 'adminRegister'])->name('admin-register');
 Route::post('/users/admin-register', [UserController::class, 'register']);
 

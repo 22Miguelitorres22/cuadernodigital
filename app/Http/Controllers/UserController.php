@@ -53,4 +53,9 @@ class UserController extends Controller
       return redirect()->route('users');
   }
 
+  public function tableUsers() {
+      $users = User::paginate(5);
+      return view('user.admin-table-users')->with('users', $users);
+  }
+
 }
