@@ -3,6 +3,8 @@
 @section('content')
 <div class="flex justify-center">
     <div class="w-8/12 bg-white p-6 rounded-md">
+        <h1 class="text-4xl font-bold mb-4">Iniciar sesión</h1>
+
         <form action="{{ route('login') }}" method="post">
             @csrf
             <div class="mb-4">
@@ -42,7 +44,7 @@
             @enderror
 
             <div>
-                <button class="bg-blue-500 text-white px-4 py-3 rounded-md font-medium w-full" type="submit">
+                <button class="bg-blue-500 text-white px-4 py-3 rounded-md font-bold w-full" type="submit">
                     Iniciar sesión
                 </button>
             </div>
