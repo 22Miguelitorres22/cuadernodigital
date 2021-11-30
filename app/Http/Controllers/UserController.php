@@ -30,9 +30,9 @@ class UserController extends Controller
           'name' => 'required|max:255',
           'username' => 'required|unique:users|max:255',
           'email' => 'required|email|unique:users',
-          /** La contraseña debe ser:
-           *  de extensión mínima 8
-           *  Debe contener caracteres alfanuméricos (almenos 1 mayúscula y minúscula) y símbolos especiales
+          /*
+          La contraseña debe ser, mínimo de 8 caracteres de longitud, y debe contener caracteres alfanuméricos
+          (al menos 1 mayúscula y minúscula) y símbolos especiales
            */
           'password' => 'required|min:8|regex:/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$/|confirmed', // Confirmed hace que el validador mire el campo con _confirmation
           'role' => 'required'

@@ -2,9 +2,9 @@
 
 @section('content')
 <div class="flex justify-center">
-    <div class="w-8/12 bg-white p-6 rounded-md">
-        <h1 class="mb-4">Registrar usuario</h1>
-        <form action="{{ route('admin-register') }}" method="post">
+    <div class="w-10/12 bg-white p-6 rounded-md">
+        <h1 class="text-3xl mb-4 font-bold">Registrar un usuario</h1>
+        <form action="{{ route('usuarios-registro') }}" method="post">
             @csrf
             <div class="mb-4">
                 <label for="name" class="sr-only">Nombre y apellido:</label>
@@ -89,10 +89,12 @@
             </div>
 
             <div class="flex">
-                <button class="flex-1 bg-blue-500 text-white px-4 py-3 rounded-md font-medium" type="submit">
+                <button class="bg-blue-500 text-white py-3 mr-1 w-1/2 rounded-md font-bold" type="submit">
                     Registrar
                 </button>
-                <button class="flex-1 bg-red-500 text-white px-4 py-3 rounded-md font-medium" type="button" onclick="window.location='{{ url()->previous() }}'">Volver</button>
+                <button class="bg-red-500 text-white py-3 w-1/2 rounded-md font-bold" type="button" onclick="window.location='{{ url()->previous() }}'">
+                    Volver
+                </button>
             </div>
         </form>
     </div>

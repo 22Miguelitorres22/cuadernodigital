@@ -19,23 +19,23 @@ use Illuminate\Support\Facades\Route;
 */
 
 
-Route::get('/register', [RegisterController::class, 'index'])->name('register');
-Route::post('/register', [RegisterController::class, 'register']);
+Route::get('/registro', [RegisterController::class, 'index'])->name('register');
+Route::post('/registro', [RegisterController::class, 'register']);
 
 
-Route::get('/login', [LoginController::class, 'index'])->name('login');
-Route::post('/login', [LoginController::class, 'login']);
+Route::get('/iniciar-sesion', [LoginController::class, 'index'])->name('login');
+Route::post('/iniciar-sesion', [LoginController::class, 'login']);
 
 
-Route::post('/logout', [LogoutController::class, 'logout'])->name('logout');
+Route::post('/cerrar-sesion', [LogoutController::class, 'logout'])->name('logout');
 
 
 Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
-Route::get('/users', [UserController::class, 'index'])->name('users');
-Route::get('/users/table', [UserController::class, 'tableUsers'])->name('table');
-Route::get('/users/admin-register', [UserController::class, 'adminRegister'])->name('admin-register');
-Route::post('/users/admin-register', [UserController::class, 'register']);
+Route::get('/usuarios', [UserController::class, 'index'])->name('usuarios');
+Route::get('/usuarios/lista', [UserController::class, 'tableUsers'])->name('usuarios-lista');
+Route::get('/usuarios/registro', [UserController::class, 'adminRegister'])->name('usuarios-registro');
+Route::post('/usuarios/registro', [UserController::class, 'register']);
 
 Route::get('/', function () {
     return redirect()->route('login');
