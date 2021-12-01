@@ -21,7 +21,7 @@ class UserController extends Controller
 
     public function adminRegister() {
       $roles = Role::get();
-      return view('user.admin-register')->with('roles',$roles);
+      return view('user.create-edit-form')->with('roles',$roles);
     }
 
     public function register(Request $request) {
@@ -66,7 +66,7 @@ class UserController extends Controller
 
   public function tableUsers() {
       $users = User::paginate(5);
-      return view('user.admin-table-users')->with('users', $users);
+      return view('user.list')->with('users', $users);
   }
 
 }
