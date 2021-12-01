@@ -20,9 +20,17 @@
                             <td class="p-2 text-center">{{ $item->email }}</td>
                             <td class="p-2 text-center">{{ $item->created_at->diffForHumans() }}</td>
                             <td class="py-2 px-1 text-center">
-                                <a href="{{ url('/usuarios', ['id' => $item->id]) }}">
+                                <a class=" hover:underline text-blue-500" href="{{ url('/usuarios', ['id' => $item->id]) }}">
                                     Editar
                                 </a>
+
+                                <form action="{{ route('usuarios.destroy', $item) }}" method="POST">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="hover:underline text-red-500">
+                                        Eliminar
+                                    </button>
+                                </form>
                             </td>
                         </tr>
                     @endforeach
