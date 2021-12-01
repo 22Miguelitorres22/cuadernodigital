@@ -58,6 +58,12 @@ class UserController extends Controller
         return view('user.detalle')->with('usuario', $usuario);
   }
 
+  public function destroy(User $usuario)
+  {
+    $usuario->delete();
+    return back();
+  }
+
   public function tableUsers() {
       $users = User::paginate(5);
       return view('user.admin-table-users')->with('users', $users);
