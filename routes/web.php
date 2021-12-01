@@ -36,6 +36,7 @@ Route::get('/usuarios', [UserController::class, 'index'])->name('usuarios');
 Route::get('/usuarios/lista', [UserController::class, 'tableUsers'])->name('usuarios-lista');
 Route::get('/usuarios/registro', [UserController::class, 'adminRegister'])->name('usuarios-registro');
 Route::post('/usuarios/registro', [UserController::class, 'register']);
+Route::get('/usuarios/{id}', [UserController::class, 'view'])->name('usuarios-detalle');
 
 Route::get('/', function () {
     return redirect()->route('login');

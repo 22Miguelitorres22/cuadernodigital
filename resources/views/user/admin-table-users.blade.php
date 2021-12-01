@@ -10,6 +10,7 @@
                     <th class="p-2 w-1/4 border border-black-800">Nombre de usuario</th>
                     <th class="p-2 w-1/4 border border-black-800">Correo electrónico</th>
                     <th class="p-2 w-1/4 border boder-black-800">Registrado</th>
+                    <th class="p-2 w-1/4 border boder-black-800">Acciones</th>
                 </thead>
                 <tbody>
                     @foreach ($users as $item)
@@ -18,6 +19,11 @@
                             <td class="p-2 text-center">{{ $item->username }}</td>
                             <td class="p-2 text-center">{{ $item->email }}</td>
                             <td class="p-2 text-center">{{ $item->created_at->diffForHumans() }}</td>
+                            <td class="py-2 px-1 text-center">
+                                <a href="{{ url('/usuarios', ['id' => $item->id]) }}">
+                                    Editar
+                                </a>
+                            </td>
                         </tr>
                     @endforeach
                 </tbody>
