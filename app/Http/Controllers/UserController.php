@@ -19,7 +19,7 @@ class UserController extends Controller
         return view('user.main');
     }
 
-    public function adminRegister() {
+    public function adminRegister(int $id) {
       $roles = Role::get();
       return view('user.admin-register')->with('roles',$roles);
     }
@@ -50,7 +50,18 @@ class UserController extends Controller
       $usuario->assignRole($rolAlumno);
 
       // Redirecciono
-      return redirect()->route('users');
+      return redirect()->route('usuarios');
+  }
+
+  public function view(int $id) {
+        $usuario = User::find($id);
+        return view('user.detalle')->with('usuario', $usuario);
+  }
+
+  public function destroy(User $usuario)
+  {
+    $usuario->delete();
+    return back();
   }
 
   public function tableUsers() {
