@@ -19,7 +19,7 @@ class UserController extends Controller
         return view('user.main');
     }
 
-    public function adminRegister(int $id) {
+    public function adminRegister() {
       $roles = Role::get();
       return view('user.admin-register')->with('roles',$roles);
     }
