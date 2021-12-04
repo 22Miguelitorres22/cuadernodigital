@@ -72,9 +72,13 @@ class UserController extends Controller
     ]);
 
     $usuario = User::find($id);
+    dd($usuario);
+    
     $usuario->name = $request->name;
     $usuario->username = $request->username;
     $usuario->email = $request->email;
+    $rolAlumno = Role::findByName($request->role);
+    $usuario->assignRole($rolAlumno);
     $usuario->save();
 
     return redirect()->route('usuarios.list');

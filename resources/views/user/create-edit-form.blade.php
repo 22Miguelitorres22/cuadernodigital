@@ -83,8 +83,12 @@
 
                         <option value="" disabled>Seleccione una opción</option>
                         @foreach($roles as $role)
-                        <!-- El valor por defecto a mostrar es ALUMNO, cuyo ID es 4 -->
-                        <option value="{{$role->name}}" {{$role->id === 4 ? 'selected' : ''}}>{{$role->name}}</option>
+                            <!-- El valor por defecto a mostrar es ALUMNO, cuyo ID es 4 -->
+                            @if($usuario)
+                            <option value="{{$role->name}}" {{ $usuario->hasRole($role->name) ? 'selected' : ''}}>{{$role->name}}</option>
+                            @else
+                            <option value="{{$role->name}}" {{$role->id === 4 ? 'selected' : ''}}>{{$role->name}}</option>
+                            @endif
                         @endforeach
                     </select>
                     @error('role')
