@@ -19,27 +19,37 @@ use Illuminate\Support\Facades\Route;
 */
 
 
+/// Autenticación y sesión
 Route::get('/registro', [RegisterController::class, 'index'])->name('register');
 Route::post('/registro', [RegisterController::class, 'register']);
-
 
 Route::get('/iniciar-sesion', [LoginController::class, 'index'])->name('login');
 Route::post('/iniciar-sesion', [LoginController::class, 'login']);
 
-
 Route::post('/cerrar-sesion', [LogoutController::class, 'logout'])->name('logout');
 
 
+/// Dashboard
 Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
+
+/// Usuarios
 Route::get('/usuarios', [UserController::class, 'index'])->name('usuarios');
 Route::delete('/usuarios/{usuario}', [UserController::class, 'destroy'])->name('usuarios.destroy');
-Route::get('/usuarios/lista', [UserController::class, 'tableUsers'])->name('usuarios-lista');
+
+Route::get('/usuarios/lista', [UserController::class, 'list'])->name('usuarios.list');
+
 Route::get('/usuarios/registro', [UserController::class, 'adminRegister'])->name('usuarios-registro');
 Route::post('/usuarios/registro', [UserController::class, 'register']);
+
+Route::get('/usuarios/{id}/editar', [UserController::class, 'adminRegister'])->name('usuarios.edit');
+Route::put('/usuarios/{id}/editar', [UserController::class, 'edit']);
+
 Route::get('/usuarios/{id}', [UserController::class, 'view'])->name('usuarios-detalle');
 
 
+
+/// Ruta por defecto
 Route::get('/', function () {
     return redirect()->route('login');
 })->name('index');
