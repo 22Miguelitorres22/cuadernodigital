@@ -43,7 +43,7 @@ class UserController extends Controller
             (al menos 1 mayúscula y minúscula) y símbolos especiales
           */
           
-          'password' => 'required|min:8|regex:/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$/|confirmed', // Confirmed hace que el validador mire el campo con _confirmation
+          'password' => 'required|min:8|confirmed', // Confirmed hace que el validador mire el campo con _confirmation
           'role' => 'required'
       ]);
 
@@ -72,13 +72,15 @@ class UserController extends Controller
     ]);
 
     $usuario = User::find($id);
-    dd($usuario);
-    
+
     $usuario->name = $request->name;
     $usuario->username = $request->username;
     $usuario->email = $request->email;
-    $rolAlumno = Role::findByName($request->role);
-    $usuario->assignRole($rolAlumno);
+    
+    $usuario->roles()->detach();
+
+    $rol = Role::findByName($request->role);
+    $usuario->assignRole($rol);
     $usuario->save();
 
     return redirect()->route('usuarios.list');
