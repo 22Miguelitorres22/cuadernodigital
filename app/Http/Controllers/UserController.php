@@ -10,7 +10,6 @@ use Spatie\Permission\Models\Role;
 
 class UserController extends Controller
 {
-
     public function __construct() {
         $this->middleware('auth');
     }
@@ -19,9 +18,17 @@ class UserController extends Controller
         return view('user.main');
     }
 
-    public function adminRegister(int $id) {
+    public function adminRegister(int $id = null) {
+      $usuario = null;
+      
+      if ($id) {
+        $usuario = User::find($id);
+      }
+    
       $roles = Role::get();
-      return view('user.admin-register')->with('roles',$roles);
+      return view('user.create-edit-form')
+              ->with('roles', $roles)
+              ->with('usuario', $usuario);
     }
 
     public function register(Request $request) {
@@ -30,10 +37,12 @@ class UserController extends Controller
           'name' => 'required|max:255',
           'username' => 'required|unique:users|max:255',
           'email' => 'required|email|unique:users',
+          
           /*
-          La contraseña debe ser, mínimo de 8 caracteres de longitud, y debe contener caracteres alfanuméricos
-          (al menos 1 mayúscula y minúscula) y símbolos especiales
-           */
+            La contraseña debe ser, mínimo de 8 caracteres de longitud, y debe contener caracteres alfanuméricos
+            (al menos 1 mayúscula y minúscula) y símbolos especiales
+          */
+          
           'password' => 'required|min:8|regex:/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$/|confirmed', // Confirmed hace que el validador mire el campo con _confirmation
           'role' => 'required'
       ]);
@@ -53,6 +62,24 @@ class UserController extends Controller
       return redirect()->route('usuarios');
   }
 
+
+  public function edit(int $id, Request $request) {
+    $this->validate($request, [
+      'name' => 'required|max:255',
+      'username' => 'required|max:255',
+      'email' => 'required',
+      'role' => 'required'
+    ]);
+
+    $usuario = User::find($id);
+    $usuario->name = $request->name;
+    $usuario->username = $request->username;
+    $usuario->email = $request->email;
+    $usuario->save();
+
+    return redirect()->route('usuarios.list');
+  }
+
   public function view(int $id) {
         $usuario = User::find($id);
         return view('user.detalle')->with('usuario', $usuario);
@@ -64,9 +91,9 @@ class UserController extends Controller
     return back();
   }
 
-  public function tableUsers() {
+  public function list() {
       $users = User::paginate(5);
-      return view('user.admin-table-users')->with('users', $users);
+      return view('user.list')->with('users', $users);
   }
 
 }
