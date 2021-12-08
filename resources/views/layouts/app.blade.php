@@ -15,7 +15,7 @@
     <nav class="p-6 bg-white flex justify-between mb-6">
         <ul class="flex items-center">
             <li>
-                <a href="{{ route('index') }}" class="p-3">Inicio</a>
+                <a href="{{ route('dashboard') }}" class="p-3">Inicio</a>
             </li>
         </ul>
 
@@ -23,7 +23,7 @@
 
             @auth
                 <li>
-                    <a href="" class="p-3 font-bold">{{ auth()->user()->name }}</a>
+                    <a href="{{ route('dashboard') }}" class="p-3 font-bold">{{ auth()->user()->name }}</a>
                 </li>
 
                 <li>
