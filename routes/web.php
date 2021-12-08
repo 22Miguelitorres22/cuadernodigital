@@ -34,22 +34,28 @@ Route::post('/cerrar-sesion', [LogoutController::class, 'logout'])->name('logout
 Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
 
+
 /// Usuarios
 Route::get('/usuarios', [UserController::class, 'index'])->name('usuarios');
 Route::delete('/usuarios/{usuario}', [UserController::class, 'destroy'])->name('usuarios.destroy');
-
 Route::get('/usuarios/lista', [UserController::class, 'list'])->name('usuarios.list');
-
 Route::get('/usuarios/registro', [UserController::class, 'adminRegister'])->name('usuarios-registro');
 Route::post('/usuarios/registro', [UserController::class, 'register']);
-
 Route::get('/usuarios/{id}/editar', [UserController::class, 'adminRegister'])->name('usuarios.edit');
 Route::put('/usuarios/{id}/editar', [UserController::class, 'edit']);
-
 Route::get('/usuarios/{id}', [UserController::class, 'view'])->name('usuarios-detalle');
+
+
 
 /// Comunicados
 Route::get('/comunicados', [ComunicadoController::class, 'index'])->name('comunicados');
+Route::delete('/comunicados/{comunicado}', [ComunicadoController::class, 'destroy'])->name('comunicados.destroy');
+Route::get('/comunicados/lista', [ComunicadoController::class, 'list'])->name('comunicados.list');
+Route::get('/comunicados/nuevo', [ComunicadoController::class, 'edit'])->name('comunicados.create');
+Route::post('/comunicados/nuevo', [ComunicadoController::class, 'create']);
+Route::get('/comunicados/{id}/editar', [ComunicadoController::class, 'edit'])->name('comunicados.edit');
+Route::put('/comunicados/{id]/editar', [ComunicadoController::class, 'edit']);
+
 
 
 /// Ruta por defecto

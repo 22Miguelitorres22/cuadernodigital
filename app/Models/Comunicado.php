@@ -15,5 +15,7 @@ class Comunicado extends Model
      * @var string[]
      */
     protected $fillable = [
+        'contenido',
+        'user_id'
     ];
 }

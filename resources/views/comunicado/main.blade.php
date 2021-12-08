@@ -9,11 +9,14 @@
   <div class="w-full rounded-md bg-white p-6">
     <ul class="flex">
       <li>
-        <!--
-          <a class="inline-block rounded-t py-2 text-blue-700 font-semibold" href="">
+        <a class="inline-block rounded-t py-2 text-blue-700 font-semibold" href="{{ route('comunicados.list') }}">
           Listar comunicados
         </a>
-        -->
+
+        <a class="inline-block rounded-t py-2 text-blue-700 font-semibold" href="{{ route('comunicados.create') }}">
+          Crear un comunicado
+        </a>
+
       </li>
     </ul>
   </div>
