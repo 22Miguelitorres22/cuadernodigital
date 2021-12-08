@@ -5,6 +5,7 @@ use App\Http\Controllers\Auth\LogoutController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\ComunicadoController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -47,6 +48,8 @@ Route::put('/usuarios/{id}/editar', [UserController::class, 'edit']);
 
 Route::get('/usuarios/{id}', [UserController::class, 'view'])->name('usuarios-detalle');
 
+/// Comunicados
+Route::get('/comunicados', [ComunicadoController::class, 'index'])->name('comunicados');
 
 
 /// Ruta por defecto
