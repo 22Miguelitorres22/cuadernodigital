@@ -25,7 +25,17 @@ class UserSeeder extends Seeder
 
 
         $rolDirectivo = Role::findByName('Directivo');
-
         $user->assignRole($rolDirectivo);
+
+
+        $otroUser = User::factory()->create([
+            'name' => 'Juan Topo',
+            'email' => 'jtopo@gmail.com',
+            'username' => 'jtopo',
+            'password' => Hash::make('abc123')
+        ]);
+
+        $rolAlumno = Role::findByName('Alumno');
+        $otroUser->assignRole($rolAlumno);
     }
 }
