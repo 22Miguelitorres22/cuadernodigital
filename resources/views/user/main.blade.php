@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="flex flex-wrap justify-center max-w-screen-lg m-auto">
+<div class="flex flex-wrap justify-center max-w-screen-xl m-auto">
   <div class="w-full">
       <h1 class="text-4xl mb-4 font-bold">Gestión de usuarios</h1>
   </div>

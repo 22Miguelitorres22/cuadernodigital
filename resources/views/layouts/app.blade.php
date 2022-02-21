@@ -5,8 +5,6 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>I.S.F.T. N° 177 - Cuaderno Digital</title>
-
-
     <!-- Hojas de estilo -->
     <link rel="stylesheet" href="{{ asset('css/app.css'); }}">
 </head>
@@ -15,7 +13,7 @@
     <nav class="p-6 bg-white flex justify-between mb-6">
         <ul class="flex items-center">
             <li>
-                <a href="{{ route('dashboard') }}" class="p-3">Inicio</a>
+                <a class="text-4xl font-bold" href="{{ route('dashboard') }}" class="p-3">I.S.F.T. N° 177 | Cuaderno Digital</a>
             </li>
         </ul>
 
@@ -23,7 +21,7 @@
 
             @auth
                 <li>
-                    <a href="{{ route('dashboard') }}" class="p-3 font-bold">{{ auth()->user()->name }}</a>
+                    Sesión iniciada como: <a href="{{ route('dashboard') }}" class="p-3 font-bold">{{ auth()->user()->name }}</a>
                 </li>
 
                 <li>
