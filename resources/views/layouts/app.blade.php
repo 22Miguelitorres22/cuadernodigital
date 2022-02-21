@@ -16,14 +16,11 @@
                 <a class="text-4xl font-bold" href="{{ route('dashboard') }}" class="p-3">I.S.F.T. N° 177 | Cuaderno Digital</a>
             </li>
         </ul>
-
         <ul class="flex items-center">
-
             @auth
                 <li>
                     Sesión iniciada como: <a href="{{ route('dashboard') }}" class="p-3 font-bold">{{ auth()->user()->name }}</a>
                 </li>
-
                 <li>
                     <form action="{{ route('logout') }}" method="post" class="inline">
                         @csrf
@@ -36,17 +33,12 @@
             <li>
                 <a href="{{ route('register') }}" class="p-3">Registrarse</a>
             </li>
-
-
             <li>
                 <a href="{{ route('login') }}" class="p-3">Iniciar sesión</a>
             </li>
             @endguest
         </ul>
-
     </nav>
-
-
     @yield('content')
 </body>
 </html>
