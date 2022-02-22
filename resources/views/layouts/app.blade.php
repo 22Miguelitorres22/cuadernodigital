@@ -19,7 +19,7 @@
         <ul class="flex items-center">
             @auth
                 <li>
-                    Sesión iniciada como: <a href="{{ route('dashboard') }}" class="p-3 font-bold">{{ auth()->user()->name }}</a>
+                    Sesión iniciada como: <a href="{{ route('dashboard') }}" class="p-3 font-bold">{{ auth()->user()->name }} ({{ auth()->user()->getRoleNames()[0] }})</a>
                 </li>
                 <li>
                     <form action="{{ route('logout') }}" method="post" class="inline">
