@@ -61,7 +61,7 @@ Route::put('/comunicados/{id}/editar', [ComunicadoController::class, 'edit']);
 
 /// Eventos
 Route::get('/eventos', [EventoController::class, 'index'])->name('eventos');
-Route::get('/eventos/nuevo', [EventoController::class, 'view'])->name('eventos.create');
+Route::get('/eventos/nuevo', [EventoController::class, 'create'])->name('eventos.create');
 Route::post('/eventos/nuevo', [EventoController::class, 'store']);
 Route::get('/eventos/{id}/editar', [EventoController::class, 'edit'])->name('eventos.edit');
 Route::put('/eventos/{id}/editar', [EventoController::class, 'update']);

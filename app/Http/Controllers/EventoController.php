@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Evento;
 use Illuminate\Http\Request;
 
 class EventoController extends Controller
@@ -17,7 +18,8 @@ class EventoController extends Controller
      */
     public function index()
     {
-        return view('evento.main');
+        $eventos = Evento::paginate(25);
+        return view('evento.main')->with('eventos', $eventos);
     }
 
     /**
@@ -27,7 +29,7 @@ class EventoController extends Controller
      */
     public function create()
     {
-        //
+        return view('evento.create-edit-form')->with('evento', null);
     }
 
     /**
