@@ -13,8 +13,11 @@
             Usuarios
         </a>
         @endhasrole
-        <a class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" href="{{ route('comunicados') }}">
+        <a class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 mr-1 rounded" href="{{ route('comunicados') }}">
             Comunicados
+        </a>
+        <a class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" href="{{ route('eventos') }}">
+            Eventos
         </a>
     </div>
 </div>

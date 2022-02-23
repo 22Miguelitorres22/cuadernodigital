@@ -6,6 +6,7 @@ use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ComunicadoController;
+use App\Http\Controllers\EventoController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -56,6 +57,15 @@ Route::post('/comunicados/nuevo', [ComunicadoController::class, 'create']);
 Route::get('/comunicados/{id}/editar', [ComunicadoController::class, 'view'])->name('comunicados.edit');
 Route::put('/comunicados/{id}/editar', [ComunicadoController::class, 'edit']);
 
+
+
+/// Eventos
+Route::get('/eventos', [EventoController::class, 'index'])->name('eventos');
+Route::get('/eventos/nuevo', [EventoController::class, 'view'])->name('eventos.create');
+Route::post('/eventos/nuevo', [EventoController::class, 'store']);
+Route::get('/eventos/{id}/editar', [EventoController::class, 'edit'])->name('eventos.edit');
+Route::put('/eventos/{id}/editar', [EventoController::class, 'update']);
+Route::delete('/eventos/{evento}', [EventoController::class, 'destroy'])->name('eventos.destroy');
 
 
 /// Ruta por defecto
