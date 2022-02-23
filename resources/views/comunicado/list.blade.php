@@ -23,11 +23,17 @@
                         <td class="p-2 text-center">{{ $item->contenido }}</td>
                         <td class="p-2 text-center">{{ $item->created_at->diffForHumans() }}</td>
                         <td class="py-2 px-1 text-center"> 
-                            @if($item->user_id == Auth::user()->id)
-                            <a class="hover:underline text-blue-500" href="{{ route('comunicados.edit', $item) }}">
-                                Editar
-                            </a>
-                            @endif
+                            @unlessrole('Directivo')
+                                @if($item->user_id == Auth::user()->id)                            
+                                <a class="hover:underline text-blue-500" href="{{ route('comunicados.edit', $item) }}">
+                                    Editar
+                                </a>
+                                @endif
+                            @else
+                                <a class="hover:underline text-blue-500" href="{{ route('comunicados.edit', $item) }}">
+                                    Editar
+                                </a>
+                            @endunlessrole
 
                             <form action="{{ route('comunicados.destroy', $item) }}" method="POST">
                                 @csrf

@@ -3,7 +3,7 @@
 @section('content')
 <div class="flex flex-wrap justify-center max-w-screen-xl m-auto">
   <div class="w-full">
-      <h1 class="text-4xl mb-4 font-bold">Gestión de comunicados</h1>
+      <h1 class="text-4xl mb-4 font-bold">Gestión de comunicados</h1>      
   </div>
 
   <div class="w-full rounded-md bg-white p-6">

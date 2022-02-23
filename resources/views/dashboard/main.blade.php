@@ -2,8 +2,9 @@
 
 @section('content')
 <div class="flex flex-wrap justify-center max-w-screen-xl m-auto">
-    <div class="w-full">
-        <h1 class="text-4xl mb-4 font-bold">Dashboard</h1>
+    <div class="w-full mb-4">
+        <h1 class="text-4xl mb-2 font-bold">Dashboard</h1>
+        <p>Clickear en los botones a continuación para acceder al módulo correspondiente</p>
     </div>
 
     <div class="w-full bg-white rounded-md p-6">
