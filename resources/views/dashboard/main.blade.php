@@ -7,11 +7,13 @@
     </div>
 
     <div class="w-full bg-white rounded-md p-6">
+        @hasrole('Directivo')
         <a class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 mr-1 rounded" href="{{ route('usuarios') }}">
-            Gestión de Usuarios
+            Usuarios
         </a>
+        @endhasrole
         <a class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" href="{{ route('comunicados') }}">
-            Gestión de Comunicados
+            Comunicados
         </a>
     </div>
 </div>

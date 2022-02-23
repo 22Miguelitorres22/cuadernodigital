@@ -53,8 +53,8 @@ Route::delete('/comunicados/{comunicado}', [ComunicadoController::class, 'destro
 Route::get('/comunicados/lista', [ComunicadoController::class, 'list'])->name('comunicados.list');
 Route::get('/comunicados/nuevo', [ComunicadoController::class, 'edit'])->name('comunicados.create');
 Route::post('/comunicados/nuevo', [ComunicadoController::class, 'create']);
-Route::get('/comunicados/{id}/editar', [ComunicadoController::class, 'edit'])->name('comunicados.edit');
-Route::put('/comunicados/{id]/editar', [ComunicadoController::class, 'edit']);
+Route::get('/comunicados/{id}/editar', [ComunicadoController::class, 'view'])->name('comunicados.edit');
+Route::put('/comunicados/{id}/editar', [ComunicadoController::class, 'edit']);
 
 
 

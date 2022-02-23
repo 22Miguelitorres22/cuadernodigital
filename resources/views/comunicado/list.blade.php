@@ -9,21 +9,25 @@
     <div class="w-full rounded-md bg-white p-6">
         <table class="w-full mb-4 border-collapse ">
             <thead>
-                <th class="p-2 w-1/4 border border-black-800">Destinatario</th>
-                <th class="p-2 w-1/4 border border-black-800">Contenido</th>
-                <th class="p-2 w-1/4 border border-black-800">Creado</th>
-                <th class="p-2 w-1/4 border boder-black-800">Acciones</th>
+                <th class="p-2 w-1/5 border border-black-800">Creador</th>
+                <th class="p-2 w-1/5 border border-black-800">Destinatario</th>
+                <th class="p-2 w-1/5 border border-black-800">Contenido</th>
+                <th class="p-2 w-1/5 border border-black-800">Creado</th>
+                <th class="p-2 w-1/5 border boder-black-800">Acciones</th>
             </thead>
             <tbody>
                 @foreach ($comunicados as $item)
                     <tr class="border">
                         <td class="p-2 text-center">{{ $item->user_id }}</td>
+                        <td class="p-2 text-center">{{ $item->destination_user_id }}</td>
                         <td class="p-2 text-center">{{ $item->contenido }}</td>
                         <td class="p-2 text-center">{{ $item->created_at->diffForHumans() }}</td>
-                        <td class="py-2 px-1 text-center">
+                        <td class="py-2 px-1 text-center"> 
+                            @if($item->user_id == Auth::user()->id)
                             <a class="hover:underline text-blue-500" href="{{ route('comunicados.edit', $item) }}">
                                 Editar
                             </a>
+                            @endif
 
                             <form action="{{ route('comunicados.destroy', $item) }}" method="POST">
                                 @csrf

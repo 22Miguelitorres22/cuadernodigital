@@ -16,6 +16,7 @@ class Comunicado extends Model
      */
     protected $fillable = [
         'contenido',
-        'user_id'
+        'user_id',
+        'destination_user_id'
     ];
 }

@@ -20,8 +20,14 @@ class CreateComunicadosTable extends Migration
             // texto del comunicado
             $table->text('contenido');
 
-            // Relación con user (destinatario)
+            // Relación con user (creador)
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
+
+            // Relación con user (destinatario)
+            // $table->index('destination_user_id');
+            $table->bigInteger('destination_user_id')->unsigned();
+            // $table->index('destination_user_id');
+            $table->foreign('destination_user_id')->references('id')->on('users')->onDelete('cascade');
 
             // created_at, updated_at
             $table->timestamps();
