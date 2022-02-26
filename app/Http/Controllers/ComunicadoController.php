@@ -70,4 +70,9 @@ class ComunicadoController extends Controller
 
         return redirect()->route('comunicados.list');
     }
+
+    public function destroy(Comunicado $comunicado) {
+        $comunicado->delete();
+        return back();
+    }
 }

@@ -56,7 +56,7 @@ Route::get('/comunicados/nuevo', [ComunicadoController::class, 'view'])->name('c
 Route::post('/comunicados/nuevo', [ComunicadoController::class, 'create']);
 Route::get('/comunicados/{id}/editar', [ComunicadoController::class, 'view'])->name('comunicados.edit');
 Route::put('/comunicados/{id}/editar', [ComunicadoController::class, 'edit']);
-
+Route::delete('/comunicados/{comunicado}', [EventoController::class, 'destroy'])->name('comunicados.destroy');
 
 
 /// Eventos

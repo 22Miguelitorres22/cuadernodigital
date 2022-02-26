@@ -40,7 +40,20 @@ class EventoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+            'tipo_evento' => 'required',
+            'contenido' => 'required', 
+            'fecha' => 'required'
+        ]);
+
+        $evento = Evento::create([
+            'tipo_evento' => $request->tipo_evento,
+            'user_id' => auth()->user()->id,
+            'fecha' => $request->fecha,
+            'contenido' => $request->contenido
+        ]);
+
+        return redirect()->route('eventos');
     }
 
     /**
@@ -49,9 +62,9 @@ class EventoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(int $id)
     {
-        //
+        return view('evento.create-edit-form')->with('evento', Evento::find($id));
     }
 
     /**
@@ -60,9 +73,9 @@ class EventoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(int $id)
     {
-        //
+        return view('evento.create-edit-form')->with('evento', Evento::find($id));
     }
 
     /**
@@ -74,7 +87,21 @@ class EventoController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->validate($request, [
+            'tipo_evento' => 'required',
+            'contenido' => 'required', 
+            'fecha' => 'required'
+        ]);
+
+        $evento = Evento::find($id);
+
+        $evento->tipo_evento = $request->tipo_evento;
+        $evento->fecha = $request->fecha;
+        $evento->contenido = $request->contenido;
+
+        $evento->save();
+
+        return redirect()->route('eventos');
     }
 
     /**
@@ -83,8 +110,9 @@ class EventoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Evento $evento)
     {
-        //
+        $evento->delete();
+        return back();
     }
 }

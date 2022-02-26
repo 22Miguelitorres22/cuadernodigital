@@ -19,10 +19,23 @@
                 @method('PUT')
             @endif
 
+
             <div class="mb-4">
                 <div class="inline-block relative w-full">
-                    <label for="contenido" class="sr-only">Tipo de evento:</label>
-                    <input value="{{ $evento ? $evento->tipo_evento : old('tipo_evento') }}" class="@error('tipo_evento') border-red-500 @enderror bg-gray-100 border-2 w-full p-4 rounded-md" type="date" name="tipo_evento" id="tipo_evento" placeholder="Tipo de evento">
+                    <label for="fecha" class="sr-only">Fecha:</label>
+                    <input value="{{ $evento ? $evento->fecha : old('fecha') }}" class="@error('fecha') border-red-500 @enderror bg-gray-100 border-2 w-full p-4 rounded-md" type="date" name="fecha" id="fecha" placeholder="Fecha del evento">
+                    @error('contenido')
+                    <div class="text-red-500 mt-2 text-sm">
+                        {{ $message }}
+                    </div>
+                    @enderror
+                </div>
+            </div>
+
+            <div class="mb-4">
+                <div class="inline-block relative w-full">
+                    <label for="tipo_evento" class="sr-only">Tipo de evento:</label>
+                    <input value="{{ $evento ? $evento->tipo_evento : old('tipo_evento') }}" class="@error('tipo_evento') border-red-500 @enderror bg-gray-100 border-2 w-full p-4 rounded-md" type="text" name="tipo_evento" id="tipo_evento" placeholder="Tipo de evento (por ejemplo, aniversario)">
                     @error('contenido')
                     <div class="text-red-500 mt-2 text-sm">
                         {{ $message }}
