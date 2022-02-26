@@ -4,7 +4,13 @@
 
 <div class="flex flex-wrap justify-center max-w-screen-lg m-auto">
     <div class="w-full">
-        <h1 class="text-4xl mb-4 font-bold">Registrar un usuario</h1>
+        <h1 class="text-4xl mb-4 font-bold">
+            @if($usuario != null) 
+            Registrar un usuario
+            @else
+            Editar un usuario
+            @endif
+        </h1>
     </div>
 
     <div class="w-full rounded-md bg-white p-6">
@@ -104,6 +110,22 @@
                 </div>
             </div>
 
+            @if($usuario != null)
+            <fieldset class="border border-solid border-2 rounded-md border-gray-300 p-3 bg-gray-100 mb-3">
+                <legend>Notas del alumno</legend>
+                <div class="mb-4">
+                    @for($i = 1; $i <= 3; $i++)
+                    <fieldset class="mb-2">
+                        <legend>{{$i}}° trimestre</legend>
+                        <div class="inline-block relative w-1/2">
+                            <input value="" class="bg-white border-2 w-full p-4 rounded-md" type="text" name="nota[{{$i}}]" id="nota{{$i}}" placeholder="Nota {{$i}}° trimestre">
+                        </div>
+                    </fieldset>
+                    @endfor
+                </div>
+            </fieldset>
+            @endif
+
             <div class="flex">
                 <button class="bg-blue-500 text-white py-3 mr-1 w-1/2 rounded-md font-bold" type="submit">
                     Registrar
@@ -115,5 +137,4 @@
         </form>
     </div>
 </div>
-
 @endsection
